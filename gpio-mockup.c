@@ -206,6 +206,6 @@ static void __exit mockup_gpio_exit(void) {
 module_init(mockup_gpio_init);
 module_exit(mockup_gpio_exit);
 
-MODULE_LICENSE("GPL 3.0");
+MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Hank Wang - wanghanchi2000@gmail.com");
 MODULE_DESCRIPTION("gpio-mockup example");
