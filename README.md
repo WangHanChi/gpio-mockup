@@ -13,6 +13,16 @@ This is a simple GPIO mockup kernel module that registers a fake GPIO chip with 
 - Linux Kernel (with GPIO subsystem support)
 - `gpiod` tools (installed via `libgpiod`)
 
+## Build Requirements
+
+- Compiler
+- Linux-headers
+
+Various Linux distrobutions have their own idea about Linux-headers.
+On Debian there is the package `linux-headers-amd64`.
+Verify your distro with commands like `apt search linux-header`
+and `apt show linux-header-amd64`.
+
 ### Installing `libgpiod`
 
 On Ubuntu, install `libgpiod` tools by running:
