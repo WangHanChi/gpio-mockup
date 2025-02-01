@@ -46,7 +46,7 @@ sudo insmod gpio-mockup.ko
 ```
 4. Verify the module is loaded by checking `dmesg`:
 ```shell
-dmesg | grep "Mockup GPIO"
+sudo dmesg | grep "Mockup GPIO"
 ```
 5. Confirm that the mock GPIO chip is registered using `gpiodetect`:
 ```shell
