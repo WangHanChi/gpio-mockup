@@ -6,6 +6,7 @@
 #include <linux/gpio/driver.h>
 #include <linux/module.h>
 #include <linux/platform_device.h>
+#include <linux/version.h>
 
 #define MOCKUP_GPIO_NUM 4
 
@@ -152,11 +153,20 @@ static int mockup_gpio_probe(struct platform_device *pdev)
  *
  * Unregisters the GPIO chip.
  */
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 11, 0)
+static void mockup_gpio_remove(struct platform_device *pdev)
+{
+    pr_info("Mockup GPIO chip unregistered\n");
+    return;
+}
+#else
 static int mockup_gpio_remove(struct platform_device *pdev)
 {
     pr_info("Mockup GPIO chip unregistered\n");
     return 0;
 }
+#endif
+
 
 /* Platform driver structure */
 static struct platform_driver mockup_gpio_driver = {
