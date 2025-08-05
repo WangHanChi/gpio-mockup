@@ -14,6 +14,13 @@ static struct gpio_chip mockup_gpio_chip;
 static int gpio_values[MOCKUP_GPIO_NUM] = {
     0};  // Array to store the state of each GPIO pin
 
+static const char *mockup_gpio_line_names[MOCKUP_GPIO_NUM] = {
+    "mockup-gpio0",
+    "mockup-gpio1",
+    "mockup-gpio2",
+    "mockup-gpio3",
+};
+
 /**
  * mockup_gpio_get_direction - Get the direction of a GPIO pin.
  * @chip: Pointer to the GPIO chip structure.
@@ -135,6 +142,9 @@ static int mockup_gpio_probe(struct platform_device *pdev)
     mockup_gpio_chip.direction_output = mockup_gpio_direction_output;
     mockup_gpio_chip.get = mockup_gpio_get;
     mockup_gpio_chip.set = mockup_gpio_set;
+
+    /* Add gpio line names */
+    mockup_gpio_chip.names = mockup_gpio_line_names;
 
     /* Register GPIO chip with device-managed resource handling */
     ret = devm_gpiochip_add_data(&pdev->dev, &mockup_gpio_chip, NULL);
